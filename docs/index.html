@@ -1,0 +1,234 @@
+ <!DOCTYPE html>
+<html lang="ja-jp" dir="ltr">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+ 
+    <!-- Header -->
+    <title>Music Player</title>
+    <meta charset="utf-8">
+    <meta name="description" content="曲を流せます。">
+    <meta name="author" content="UNKNOWN">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta property="og:url" content="https://kage-sakura.github.io/music">
+    <meta property="og:image" content="https://kage-sakura.github.io/music/thumbnail.jpg">
+    <meta property="og:title" content="Music Player">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="曲を流せます。">
+    <meta name="theme-color" content="#B1FFD6">
+    <meta property="site_name" content="UNKNOWN">
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+
+    <!-- Style Sheet -->
+    <style type="text/css">
+      @charset "UTF-8";
+      h1 {
+        color: #ef93b6;
+      }
+      .active {
+        background: #ffff99;
+        color: #0097FF;
+      }
+      li {
+        border-top: solid 1px #ffb3d6;
+      }
+      strong {
+        color: #ff0000;
+      }
+      .JP, *[data-jp] {
+        font-family: 'Sawarabi Mincho';
+      }
+      body {
+        font-family: 'Caveat';
+        text-align: center;
+        background: #000000;
+        cursor: default;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
+      .appframe {
+        background: #ffffff;
+        width: 420px;
+        margin: auto;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      a {
+        text-decoration: none;
+        color: #00ccff;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0px
+      }
+      .loop_list {
+        color: #0066ff;
+      }
+      .loop_inmsc {
+        color: #13d67b;
+      }
+      .loop_off {
+        color: #ff6600;
+      }
+      /* スマホ以外(仮) */
+      @media only screen and (min-width: 813px){
+        li:hover{
+          background: #c8c8ff;
+        }
+        h1{
+          color: #4ea8f9;
+        }
+        li{
+          border-top: solid 1px #b1daff;
+          padding: 2px;
+        }
+        .active{
+          background: #7777ff;
+          color: #ff6800;
+        }
+      }
+      #dummy{
+        padding: 0;
+      }
+      .secretframe{
+        background: #000804;
+        width: 125px;
+        margin-right: 0px;
+        padding: 0px;
+        border-radius: 63px;
+      }
+    </style>
+ 
+ 
+    <!-- JavaScript(Functions) -->
+    <script type="text/javascript" charset="utf-8"> <!--
+      function playMusic(li) {
+        const file = li.dataset.file;
+        const audio = document.querySelector('audio');
+        audio.src = file;
+        audio.play();
+        const activeli = document.querySelector('.active');
+        activeli.classList.remove('active');
+        li.classList.add('active');
+      }
+    //--> </script>
+ 
+  </head>
+  
+  <!-- Safariリーダー除け -->
+  <body class="comment disqus foot rss">
+    
+    <!-- Application Frame -->
+    <div class="appframe">
+      <h1>Music Player</h1><br>
+      <audio class="JP" controls="">
+        このブラウザは、audioタグに対応していません。
+      </audio>
+      <p class="JP">
+        聴きたい曲の曲名をクリック/タップしてね
+      </p>
+      <div>
+        loop：<span class="setting_loop loop_off" data-loop="OFF">OFF</span>
+      </div>
+      <ul>
+ 
+        <!--  Music List  -->
+  
+        <li data-file="crusade.mp3">Crusade</li>
+        <li data-file="For_my_friend_who_is_here_now.mp3">For my friend who is here now</li>
+        <li data-file="THINGS_FOR_A_FRIEND_NOW_DECEASED.mp3">THINGS FOR A FRIEND NOW DECEASED</li>
+        <li data-file="Locked_Girl_The_Secret_Girl_s_Room_Remix_.mp3">Locked Girl ~The Secret Girl's Room (Remix)</li>
+        <li data-file="U_N_Owen_was_her_Remix_.mp3">U.N.Owen was her? (Remix)</li>
+        <li data-file="Japanese_era_name_from_Meiji_to_Reiwa.mp3">Japanese era name ~from Meiji to Reiwa</li>
+        <li data-file="UNKOWN_BREAKER.mp3">UNKOWN BREAKER</li>
+        <li data-file="UNDERFELL_Bergentruckung_and_ASGORE_.mp3">UNDERFELL - "Bergentruckung" and "ASGORE"</li>
+        <li data-file="Love_color_master_spark_Symphon_Active_NEETs.mp3">"Love color, master spark" [Symphon Active NEETs]</li>
+        <li data-file="Medley2_Maodamashi.mp3">Medley2 [Maô damashî]</li>
+        <li data-file="Daisuke.mp3">Daisuke</li>
+        <li data-file="Toho_vocal_Little_moon_which_is_crimson_forever.mp3"> [Tôhô vocal] Little moon which is crimson forever</li>
+        <li data-file="Redo.mp3">Redo</li>
+        <li data-file="Aquarion.mp3">Genesis of Aquarion</li>
+ 
+        <li data-file="" class="active" id="dummy"></li>
+      </ul>
+      <p style="font-size:8px;text-align:left" class="JP">
+        英語で書いているのは, フォントが<br />
+        日本語に対応していないからです<span id="ip-address"></span>
+      </p>
+ 
+      <!-- JavaScript(Not Functions) -->
+      <script type="text/javascript" charset="utf-8"> <!--
+ {
+        const listitems = document.querySelectorAll('li');
+        const setting_loop = document.querySelector('.setting_loop');
+        const audio = document.querySelector('audio');
+        for (const item of listitems)
+          item.addEventListener('click', () => {
+            if (item.id === "dummy") return;
+            playMusic(item);
+          });
+        audio.addEventListener('ended', () => {
+          const loop = setting_loop.dataset.loop;
+          switch (setting_loop.dataset.loop) {
+            case "List":
+              const nextli = document.querySelector('.active').nextElementSibling;
+              if (nextli.id === "dummy") {
+                const firstli = document.querySelector('.active').parentElement.firstElementChild;
+                playMusic(firstli);
+              } else {
+                playMusic(nextli);
+              }
+              break;
+            case "a_Music":
+              audio.play();
+              break;
+          }
+        });
+        setting_loop.addEventListener('click', () => {
+          switch (setting_loop.dataset.loop) {
+            case "a_Music":
+              setting_loop.dataset.loop = 'OFF';
+              setting_loop.className = "loop_off";
+              setting_loop.textContent = "OFF";
+              break;
+            case "OFF":
+              setting_loop.dataset.loop = 'List';
+              setting_loop.className = "loop_list";
+              setting_loop.textContent = "In list";
+              break;
+            default:
+              setting_loop.dataset.loop = 'a_Music';
+              setting_loop.className = "loop_inmsc";
+              setting_loop.textContent = "In a music";
+              break;
+          }
+        });
+
+        try { navigator.serviceWorker.register('/sw.js') } catch { }
+        console.log('%cストップ！\nすぐに閉じてください。', 'color:#ff0;font-size:80px;-webkit-text-stroke:#f00 3px;font-weight:bold;');
+
+        const font01 = document.createElement("link");
+        font01.rel = "stylesheet";
+        font01.href = "https://fonts.googleapis.com/css?family=Sawarabi+Mincho";
+        const adder = document.head.append.bind(document.head, font01);
+        window.addEventListener("load", () => adder());
+}
+      //--> </script>
+ 
+    </div>
+ 
+    <br>
+ 
+    <!-- Easter Egg -->
+    <div class="secretframe">
+      <br>
+      <a href="http://ja.scp-wiki.net" style="cursor:default">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/SCP_Foundation_%28emblem%29.svg/768px-SCP_Foundation_%28emblem%29.svg.png" alt="SCP" width="63" height="59">
+      </a>
+      <br>
+      <br>
+    </div>
+  </body>
+</html>
